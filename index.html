@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netsoccer2 is back!</title>
+    
+    <meta name="description" content="Netsoccer2 - Jogo de futebol online está de volta! Baixe agora e entre para a comunidade.">
+    <meta name="author" content="Netsoccer Team">
+    <meta name="keywords" content="netsoccer, futebol, jogo online, soccer game">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https:;">
+    
+    <style>
+        /* --- FONTES E ESTILOS GLOBAIS --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+            background-color: #0a0a0a; /* Cor de fundo sólida como fallback */
+        }
+
+        /* --- ANIMAÇÕES --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .fade-out { animation: fadeOut 0.3s ease-out forwards; }
+        .fade-in { animation: fadeIn 0.4s ease-in forwards; }
+
+        /* --- LAYOUT E ELEMENTOS PRINCIPAIS --- */
+        #background-parallax {
+            position: fixed;
+            top: -5%; left: -5%;
+            width: 110%; height: 110%;
+            z-index: -1;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            animation: fadeInUp 1s ease-out 0.5s;
+            animation-fill-mode: backwards;
+        }
+
+        /* --- TEXTOS E BOTÕES --- */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: #FFFFFF;
+            text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7), 0px 0px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .whatsapp-button {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto 20px auto;
+            color: #333;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffffff 50%, #e8e8e8 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+            transition: all 0.5s ease-out;
+        }
+
+        .download-button {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            color: #fff;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #25D366 50%, #1da851 50%);
+            background-size: 200% 100%;
+            background-position: right bottom;
+            transition: all 0.5s ease-out;
+        }
+
+        /* --- INTERAÇÕES E EFEITOS --- */
+        .whatsapp-button:hover, .whatsapp-button:focus {
+            background-position: left bottom;
+            box-shadow: 0px 8px 25px rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .download-button:hover, .download-button:focus {
+            background-position: left bottom;
+            box-shadow: 0px 8px 25px rgba(37, 211, 102, 0.4);
+            transform: scale(1.05);
+        }
+
+        .whatsapp-button:focus, .download-button:focus, .lang-switcher:focus {
+            outline: none;
+        }
+
+        .whatsapp-button:active, .download-button:active, .lang-switcher:active {
+            transform: scale(0.97);
+            transition: transform 0.1s ease;
+        }
+
+        .lang-switcher:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-switcher:focus {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- RESPONSIVIDADE PARA MOBILE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+            .whatsapp-button, .download-button { 
+                padding: 12px 28px; 
+                font-size: 1rem;
+                max-width: 280px;
+            }
+            .lang-switcher { top: 15px; right: 15px; padding: 6px 14px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="background-parallax"></div>
+
+    <button id="language-toggle" class="lang-switcher">English</button>
+
+    <div class="container">
+        <div class="lang-text" data-lang="pt">
+            <h1>Netsoccer2 está de volta!</h1>
+            <a href="https://chat.whatsapp.com/Ezn8wtsDS4D6SppEizrCUB" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+                Entrar no Grupo do WhatsApp
+            </a>
+            <a href="https://github.com/cef20051/Netsoccer2/releases/download/v009/Netsoccer2_Setup.exe" class="download-button" target="_blank" rel="noopener noreferrer">
+                Fazer Download!
+            </a>
+        </div>
+        <div class="lang-text" data-lang="en" style="display: none;">
+            <h1>Netsoccer2 is back!</h1>
+            <a href="https://chat.whatsapp.com/Ezn8wtsDS4D6SppEizrCUB" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
+                Join WhatsApp Group
+            </a>
+            <a href="https://github.com/cef20051/Netsoccer2/releases/download/v009/Netsoccer2_Setup.exe" class="download-button" target="_blank" rel="noopener noreferrer">
+                Download Now!
+            </a>
+        </div>
+    </div>
+
+    <script defer>
+        // --- REMOVE PARÂMETROS DA URL (SEGURANÇA) ---
+        if (window.location.search) {
+            const cleanUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
+
+        // --- LÓGICA PARA TROCAR IDIOMA ---
+        const toggleButton = document.getElementById('language-toggle');
+        const ptElements = document.querySelector('[data-lang="pt"]');
+        const enElements = document.querySelector('[data-lang="en"]');
+        let currentLang = 'pt';
+        let isSwitching = false;
+
+        toggleButton.addEventListener('click', () => {
+            if (isSwitching) return;
+            isSwitching = true;
+
+            const activeElements = (currentLang === 'pt') ? ptElements : enElements;
+            const inactiveElements = (currentLang === 'pt') ? enElements : ptElements;
+
+            activeElements.classList.add('fade-out');
+
+            setTimeout(() => {
+                activeElements.style.display = 'none';
+                activeElements.classList.remove('fade-out');
+                
+                inactiveElements.style.display = 'block';
+                inactiveElements.classList.add('fade-in');
+                
+                currentLang = (currentLang === 'pt') ? 'en' : 'pt';
+                toggleButton.textContent = (currentLang === 'pt') ? 'English' : 'Português';
+                
+                setTimeout(() => {
+                    inactiveElements.classList.remove('fade-in');
+                    isSwitching = false;
+                }, 400);
+
+            }, 300);
+        });
+
+        // --- LÓGICA DE INTERAÇÃO INTELIGENTE (DESKTOP vs MOBILE) ---
+        const background = document.getElementById('background-parallax');
+        const isMobile = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        if (isMobile) {
+            // --- EFEITO GIROSCÓPIO PARA MOBILE ---
+            const initMotion = () => {
+                if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    // Para iOS 13+
+                    DeviceOrientationEvent.requestPermission()
+                        .then(permissionState => {
+                            if (permissionState === 'granted') {
+                                window.addEventListener('deviceorientation', handleOrientation);
+                            }
+                        })
+                        .catch(console.error);
+                } else {
+                    // Para Android e iOS mais antigo
+                    window.addEventListener('deviceorientation', handleOrientation);
+                }
+            };
+
+            // Adiciona o gatilho de permissão ao primeiro toque na tela
+            document.body.addEventListener('click', initMotion, { once: true });
+
+            function handleOrientation(event) {
+                if (event.gamma === null || event.beta === null) return;
+                
+                const gamma = Math.max(-90, Math.min(90, event.gamma));
+                const beta = Math.max(-90, Math.min(90, event.beta));
+
+                const moveX = gamma * 0.4;
+                const moveY = beta * 0.4;
+
+                window.requestAnimationFrame(() => {
+                    background.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                });
+            }
+
+        } else {
+            // --- EFEITO PARALLAX COM MOUSE PARA DESKTOP ---
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                
+                const moveX = (mouseX - centerX) * 0.02;
+                const moveY = (mouseY - centerY) * 0.02;
+
+                background.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        }
+    </script>
+
+</body>
+</html>
