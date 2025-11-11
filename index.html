@@ -47,14 +47,11 @@
         #background-parallax {
             position: fixed;
             top: -5%; left: -5%;
-            width: 110%; height: 110%; /* Intencionalmente 110% para o efeito parallax funcionar */
+            width: 110%; height: 110%; 
             z-index: -1;
             background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://i.imgur.com/d5UpxUI.png');
-            background-size: cover; /* Esta é a linha que faz a imagem se adaptar */
-            
-            /* --- ESTA É A CORREÇÃO --- */
-            background-position: center top; /* Alterado de 'center' para 'center top' */
-            
+            background-size: cover; 
+            background-position: center top; /* Alinhado ao topo */
             transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
@@ -66,6 +63,7 @@
         }
 
         /* --- TEXTOS E BOTÕES --- */
+        /* O H1 foi removido, mas deixo a estilização aqui caso precise no futuro */
         h1 {
             font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 900;
@@ -179,7 +177,6 @@
 
     <div class="container">
         <div class="lang-text" data-lang="pt">
-            <h1>Netsoccer2 está de volta!</h1>
             <a href="https://chat.whatsapp.com/Ezn8wtsDS4D6SppEizrCUB" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
                 Entrar no Grupo do WhatsApp
             </a>
@@ -188,7 +185,6 @@
             </a>
         </div>
         <div class="lang-text" data-lang="en" style="display: none;">
-            <h1>Netsoccer2 is back!</h1>
             <a href="https://chat.whatsapp.com/Ezn8wtsDS4D6SppEizrCUB" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
                 Join WhatsApp Group
             </a>
