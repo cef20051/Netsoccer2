@@ -162,12 +162,25 @@
         /* --- RESPONSIVIDADE PARA MOBILE --- */
         @media (max-width: 768px) {
             h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+            
             .whatsapp-button, .download-button { 
                 padding: 12px 28px; 
                 font-size: 1rem;
                 max-width: 280px;
             }
+            
             .lang-switcher { top: 15px; right: 15px; padding: 6px 14px; font-size: 0.8rem; }
+
+            /* --- CORREÇÃO DO BACKGROUND NO MOBILE --- */
+            #background-parallax {
+                /* Muda de 'cover' para um ajuste manual */
+                /* auto = largura automática (mantém proporção) */
+                /* 120% = altura um pouco maior que a tela para permitir o movimento do giroscópio sem bordas brancas */
+                background-size: auto 120%; 
+                
+                /* Centraliza a imagem para pegar o meio do campo/estádio */
+                background-position: center center; 
+            }
         }
     </style>
 </head>
